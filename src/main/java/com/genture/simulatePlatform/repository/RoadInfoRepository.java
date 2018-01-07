@@ -1,8 +1,7 @@
-package com.genture.simulatePlatform.dao;
+package com.genture.simulatePlatform.repository;
 
 import com.genture.simulatePlatform.model.RoadInfo;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.repository.Repository;
 
 /**
  * Created by Administrator on 2018/1/5.

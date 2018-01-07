@@ -2,6 +2,8 @@ package com.genture.simulatePlatform.model;
 
 import org.springframework.data.annotation.Id;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2018/1/5.
  */
@@ -15,7 +17,7 @@ public class RoadInfo {
 
 	private String endPos;
 
-	private RoadCondition roadCondition;
+	private List<RoadCondition> roadConditions;
 
 	private long roadDistance;
 
@@ -51,12 +53,12 @@ public class RoadInfo {
 		this.endPos = endPos;
 	}
 
-	public RoadCondition getRoadCondition() {
-		return roadCondition;
+	public List<RoadCondition> getRoadCondition() {
+		return roadConditions;
 	}
 
-	public void setRoadCondition(RoadCondition roadCondition) {
-		this.roadCondition = roadCondition;
+	public void setRoadConditions(List<RoadCondition> roadConditions) {
+		this.roadConditions = roadConditions;
 	}
 
 	public long getRoadDistance() {
@@ -66,4 +68,5 @@ public class RoadInfo {
 	public void setRoadDistance(long roadDistance) {
 		this.roadDistance = roadDistance;
 	}
+
 }

@@ -7,6 +7,7 @@ public class RoadCondition {
 	private long unimpededDistance;
 	private long ambleDistance;
 	private long congestionDistance;
+	private boolean status = false;
 
 	public RoadCondition(long unimpededDistance, long ambleDistance, long congestionDistance){
 		this.ambleDistance = ambleDistance;
@@ -36,5 +37,13 @@ public class RoadCondition {
 
 	public void setCongestionDistance(long congestionDistance) {
 		this.congestionDistance = congestionDistance;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 }
