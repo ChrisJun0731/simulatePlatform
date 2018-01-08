@@ -14,8 +14,10 @@ public class DataController {
 	@RequestMapping("/gate")
 	public String response(HttpServletRequest req, HttpServletResponse resp){
 		String sid = req.getParameter("sid");
+		String reqData = req.getParameter("reqData");
+		System.out.println(reqData);
 		//result用于存储返回结果
-		String result = "";
+		String result = reqData;
 		if(sid.equals("30012")){
 			//获取道路状态
 		}

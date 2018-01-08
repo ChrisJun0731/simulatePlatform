@@ -9,10 +9,15 @@ public class RoadCondition {
 	private long congestionDistance;
 	private boolean status = false;
 
-	public RoadCondition(long unimpededDistance, long ambleDistance, long congestionDistance){
+	public RoadCondition(){
+
+	}
+
+	public RoadCondition(long unimpededDistance, long ambleDistance, long congestionDistance, boolean status){
 		this.ambleDistance = ambleDistance;
 		this.congestionDistance = congestionDistance;
 		this.unimpededDistance = unimpededDistance;
+		this.status = status;
 	}
 
 	public long getUnimpededDistance() {
