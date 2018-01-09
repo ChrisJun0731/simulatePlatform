@@ -19,8 +19,18 @@ public class RoadInfo {
 
 	private List<RoadCondition> roadConditions;
 
-	private long roadDistance;
+	private int roadDistance;
+	public RoadInfo(){
 
+	}
+	public RoadInfo(String cityId,String roadId,String startPos,String endPos,List<RoadCondition> roadCondition,int roadDistance){
+		this.cityId = cityId;
+		this.roadId = roadId;
+		this.startPos = startPos;
+		this.endPos = endPos;
+		this.roadConditions = roadCondition;
+		this.roadDistance = roadDistance;
+	}
 	public String getCityId() {
 		return cityId;
 	}
@@ -61,11 +71,11 @@ public class RoadInfo {
 		this.roadConditions = roadConditions;
 	}
 
-	public long getRoadDistance() {
+	public int getRoadDistance() {
 		return roadDistance;
 	}
 
-	public void setRoadDistance(long roadDistance) {
+	public void setRoadDistance(int roadDistance) {
 		this.roadDistance = roadDistance;
 	}
 

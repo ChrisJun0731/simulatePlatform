@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 public class SimulatePlatformApplication {
+
 	public static void main(String[] args){
 		SpringApplication.run(SimulatePlatformApplication.class);
 	}
