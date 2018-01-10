@@ -49,11 +49,13 @@ public class RoadInfoDao {
     public RoadCondition fetchValidRoadCondition(String cityId, String roadId){
 		Query query = Query.query(Criteria.where("cityId").is(cityId).and("roadId").is(roadId));
 		RoadInfo roadInfo = mongoTemplate.findOne(query, RoadInfo.class);
-		List<RoadCondition> roadConditionList = roadInfo.getRoadCondition();
 		RoadCondition roadCondition = null;
-		for(int i=0; i<roadConditionList.size(); i++){
-			if(roadConditionList.get(i).isStatus() == true){
-				roadCondition = roadConditionList.get(i);
+		if(roadInfo != null){
+			List<RoadCondition> roadConditionList = roadInfo.getRoadCondition();
+			for(int i=0; i<roadConditionList.size(); i++){
+				if(roadConditionList.get(i).isStatus() == true){
+					roadCondition = roadConditionList.get(i);
+				}
 			}
 		}
 		return roadCondition;
