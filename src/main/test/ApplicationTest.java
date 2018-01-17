@@ -96,4 +96,10 @@ public class ApplicationTest {
 		System.out.println(roadCondition.isStatus());
 	}
 
+	@Test
+	public void findAllTest(){
+		List<RoadInfo> roadInfos = mongoTemplate.findAll(RoadInfo.class);
+
+	}
+
 }

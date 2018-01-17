@@ -23,4 +23,6 @@ public interface RoadInfoRepository extends MongoRepository<RoadInfo, Long> {
 	 * @return
 	 */
 	public RoadInfo findByCityIdAndStartPosAndEndPos(String cityId, String startPos, String endPos);
+
+
 }
