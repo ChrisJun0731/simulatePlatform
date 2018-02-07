@@ -43,7 +43,7 @@ public class DataProcess {
 		}
 		//执行插入语句
 		RoadCondition conditionInfo=new RoadCondition(unimpeded_distance,amble_distance,congestion_distance,true);
-		roadInfoDao.addRoadCondition(cityId,roadId,conditionInfo);
+		roadInfoDao.insertRoadCondition(cityId,roadId,conditionInfo);
 		return jsonObject;
 	}
 }

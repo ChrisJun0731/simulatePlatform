@@ -10,9 +10,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-
+import java.security.cert.Certificate;
 import java.util.List;
 
 /**
@@ -35,14 +38,14 @@ public class Scheduler {
 	public void updateRoadCond(){
 		final DataProcess dataProcess = new DataProcess();
 		//更新所有的路况
-		Block<RoadInfo> roadInfoBlock = new Block<RoadInfo>(){
-			@Override
-			public void apply(RoadInfo roadInfo){
+		List<RoadInfo> roadInfoList = mongoTemplate.findAll(RoadInfo.class);
+		if(roadInfoList!=null){
+			for (RoadInfo info : roadInfoList) {
 				JSONObject data;
 				JSONObject json;
-				String cityId = roadInfo.getCityId();
-				String roadId = roadInfo.getRoadId();
-				int distance = roadInfo.getRoadDistance();
+				String cityId = info.getCityId();
+				String roadId = info.getRoadId();
+				int distance = info.getRoadDistance();
 				RoadCondition condition=roadInfoDao.fetchValidRoadCondition(cityId,roadId);
 				if(condition!=null){
 					//更换数据，
@@ -68,12 +71,6 @@ public class Scheduler {
 				}else{
 					dataProcess.initData(cityId,roadId,distance);
 				}
-			}
-		};
-		List<RoadInfo> roadInfoList = mongoTemplate.findAll(RoadInfo.class);
-		if(roadInfoList!=null){
-			for (RoadInfo info : roadInfoList) {
-				roadInfoBlock.apply(info);
 			}
 		}else{
 			System.out.println("无数据！请添加数据");

@@ -39,6 +39,19 @@ public class RoadInfoDao {
 	    Update addRoadConditionUpdate = new Update().push("roadConditions", roadCondition);
 	    mongoTemplate.updateFirst(roadQuery, addRoadConditionUpdate, "roadInfo");
     }
+	/**
+	 * 初始化有效的路况信息
+	 * @param cityId 城市id
+	 * @param roadId 道路id
+	 * @param roadCondition 路况
+	 */
+	public void insertRoadCondition(String cityId, String roadId, RoadCondition roadCondition){
+		//添加新的路况信息并置为有效
+		Query roadQuery = Query.query(Criteria.where("cityId").is(cityId).and("roadId").is(roadId));
+		Update addRoadConditionUpdate = new Update().push("roadConditions", roadCondition);
+		System.out.println(cityId+"-"+roadId+"-"+roadCondition.getAmbleDistance()+"/"+roadCondition.getCongestionDistance()+"/"+roadCondition.getUnimpededDistance());
+		mongoTemplate.updateFirst(roadQuery, addRoadConditionUpdate, "roadInfo");
+	}
 
 	/**
 	 * 获取有效的路况信息
